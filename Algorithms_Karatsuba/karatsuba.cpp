@@ -1,8 +1,16 @@
+/*
+	Karatsuba Multiplication Algorithm Implementation in C++
+
+	@Satyarth Arora 
+*/
+
+
 #include<iostream>
 #include<math.h>
 
 using namespace std;
 
+// Recursive Number Division Container
 struct newNumbers
 {
 	long int x;
@@ -15,6 +23,8 @@ struct newNumbers
 	}
 };
 
+
+// Digit Counter
 int countDigits(long int N,int count)
 {
 	count++; 		
@@ -22,12 +32,13 @@ int countDigits(long int N,int count)
 	return countDigits(N/10,count);
 }
 
-
+// Initializes Numbers to be Multiplied
 long int init(short int x)
 {
 	long int n;
 	cout<<"Enter Number "<<x+1<<" : ";
 	cin>>n;
+	cout<"\n\n";
 	return n;
 }
 
@@ -40,6 +51,7 @@ newNumbers divideNumber(long int N,int count,newNumbers X)
 	return X;
 }
 
+// Karatsuba Multiplication
 long int karatsuba(newNumbers X,newNumbers Y)
 {
 	long firstTerm=pow(10,(X.power+Y.power))*(X.x*Y.x);
@@ -48,9 +60,9 @@ long int karatsuba(newNumbers X,newNumbers Y)
 	return firstTerm+secondTerm+thirdTerm;
 }
 
+//Driver Function
 int main()
 {
-	
 	long int N1,N2;
 	int count=0;
 	N1=init(0);
