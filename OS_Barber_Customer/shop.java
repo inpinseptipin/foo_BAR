@@ -73,20 +73,6 @@ class Wrapper
 	}
 }
 
-class Customer extends Thread
-{
-	
-	int customer;
-	public void enterCustomer()
-	{
-		Random rand=new Random();
-		
-	}
-	public void run()
-	{	
-		System.out.println("Customer Thread : " + Thread.currentThread().getId());	
-	}
-}
 
 class Barber extends Thread
 {
@@ -129,16 +115,7 @@ class Barber extends Thread
 
 }
 
-class Barber_schedule extends Thread
-{
-	
-	public void run()
-	{
 
-		System.out.println("Barber Schedule Thread :" + Thread.currentThread().getId());
-	}
-
-}
 
 class Customer_schedule extends Thread
 {
@@ -201,9 +178,8 @@ public class shop
 {
 	public static void main(String[] args)
 	{
-		Customer customer =new Customer();
+		
 		Barber barber=new Barber();
-		Barber_schedule barber_schedule=new Barber_schedule();
 		Customer_schedule customer_schedule=new Customer_schedule();
 		Wrapper.init();
 		barber.start();
