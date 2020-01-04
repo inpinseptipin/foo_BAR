@@ -89,9 +89,11 @@ int main()
 	
 	while(choice!=5)
 	{
-		cin>>choice;
+		clear();
+		cout<<"Press 1 for 2D Translation , Press 2 for 2D Scaling , Press 3 for 2D Rotation"<<endl;
 		coordinate(X1,Y1);
 		coordinate(X2,Y2);
+		cin>>choice;
 		switch(choice)
 		{
 			case 1:printResult(choice);

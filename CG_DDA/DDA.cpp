@@ -4,26 +4,68 @@
 #include<time.h>
 #include<stdio.h>
 #include<X11/Xlib.h>
+#include<algorithm>
 
-#define Coordinate(x,y) {(x) = rand()%50 + 1 ; (y) = rand()%50+1;}  
+#define Coordinate(x,y) {(x) = rand()%250 + 1 ; (y) = rand()%250+1;}  
 #define min(x,y) ((x)>(y)?1:0)
 #define Dexy(x,y,z) ((x)>(y)?(z)=(x)-(y):(z)=(y)-(x))  
 
 using namespace std;
 
 
-
-void printResult(float coordinates[][1],int n)
+struct CO
 {
-	int gd=DETECT,gm;
-	initgraph(&gd,&gm,NULL);
-	for(int i=0;i<n;i++)
+	float x,y;
+};
+
+class coordinates
+{
+	size_t capacity {0};
+	size_t size {0};
+	public:
+	CO *co {nullptr};
+
+
+	void push(float x , float y)
 	{
-		putpixel(coordinates[i][0],coordinates[i][1],RED);	
+		if(size==capacity)
+		{
+			capacity+=5;
+			CO *temp=new CO[capacity];
+			copy_n(co,size,temp);
+			swap(co,temp);
+			delete[] temp;
+		}
+
+		co[size].x=x;
+		co[size].y=y;
+
+		cout<<"\nCoordinate Added at : "<<size<<"\n";
+		size++;
 	}
-	delay(5000);
-	closegraph();
-}
+
+	size_t printSize()
+	{
+		return size;
+	}
+
+	void printall()
+	{
+		int gd=DETECT,gm;
+		initgraph(&gd,&gm,NULL);
+		for(size_t i=0;i<size;i++)
+		{
+			//printf("( %f , %f )\n",co[i].x,co[i].y);
+			putpixel(co[i].x,co[i].y,RED);
+		}
+		delay(5000);
+		closegraph();
+		
+	}
+
+};
+
+
 
 
 int main()
@@ -31,7 +73,9 @@ int main()
 	XInitThreads();
 	srand(time(0));
 
-	float coordinates[100][1];
+	coordinates C;
+
+	
 	int n=0;
 	
 	float x1,y1,x2,y2;
@@ -76,17 +120,12 @@ int main()
 
 		X+=xInc;
 		Y+=yInc;
-		coordinates[n][0]=X;
-		coordinates[n][1]=Y;
-		n++;	
+		C.push(X,Y);	
 	}
 
-	for(int i=0;i<n;i++)
-	{
-		cout<<"\t"<<coordinates[i][0]<<"\t"<<coordinates[i][1];
-	}
+	
 
-	printResult(coordinates,n);
+	C.printall();
 	
 
 

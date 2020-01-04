@@ -59,7 +59,7 @@ void printRectangle(RECTANGLE rect)
 	int gd=DETECT,gm;
 	initgraph(&gd,&gm,NULL);
 	rectangle(rect.left,rect.top,rect.right,rect.bottom);
-	delay(15000);
+	delay(5000);
 	closegraph();
 }
 
@@ -175,11 +175,6 @@ void initCLIP(CLIP_BOUNDS clip_drop,RECTANGLE rect)
 	clip_drop.disp();
 }
 
-
-
-
-
-
 int main()
 {
 	RECTANGLE rect;
@@ -187,7 +182,7 @@ int main()
 	rect.init();
 	initCLIP(clip_drop,rect);
 
-	cohenSutherland(5,5,7,7,clip_drop);
-	//printRectangle(rect);
+	cohenSutherland(1,1,2,2,clip_drop);
+	printRectangle(rect);
 	return 0;
 }
