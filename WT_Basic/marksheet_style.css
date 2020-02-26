@@ -1,0 +1,69 @@
+body
+{
+	background-color: white;
+	background-blend-mode:luminosity;
+	width: 100%;
+	height: 100%;
+}
+
+
+.marksheet-header
+{
+	overflow: hidden;
+	align-items: center;
+	background-color: #333;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+.marksheet-header p
+{
+	font-size:xx-large;
+	text-align: center;
+	color:white;
+}
+
+.marksheet-table
+{
+	align-items: center;
+	text-align: center;
+	background-color: black;
+	color: white;
+
+}
+.marksheet-table table
+{
+	padding: 14px 16px;
+	align-items: center;
+	font-size: x-large;
+	border: 4px;
+	border-style: solid;
+	border-color: rgb(0,255,0);
+	overflow: hidden;
+	width: 100%;
+}
+
+.marksheet-table table tr th
+{
+	border: 4px;
+	border-color: rgb(0,255,0);
+	border-style: solid;
+	align-items: center;
+
+}
+
+.marksheet-table table tr td
+{
+	border: 2px;
+	border-color: rgb(255,255,255);
+	border-style: solid;
+	align-items: center;
+}
+
+.marksheet-table table tr 
+{
+	border: 4px;
+	border-color: rgb(0,255,0);
+	border-style: solid;
+	align-items: center;
+}
